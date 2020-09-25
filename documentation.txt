@@ -1,0 +1,144 @@
+Created by Noah Turbin
+
+Here is all the documentation for all the files.
+
+main.py
+the game runs in this file
+
+def main()
+runs all the game logic.
+first, asks how many players will play the game.
+the game starts. every round each person takes a turn
+and the best card wins. the deck is shuffled at the start of the round.
+cards are shuffled back into the deck
+checks for a win condition at the end of every round
+game terminates after a winner is found
+
+def askplayercount()
+asks the user for the input: how many players will play.
+accepts only 2, 3, or 4 as an answer.
+
+output: 
+	returns an int. the number of players.
+
+def playertaketurns(players,thedeck):
+each person in the list of players takes their turn
+each person draws a card,
+gets the card displayed,
+then if a penalty is applicable, it is applied.
+
+input: 
+	players: is a list of all the player objects.
+	thedeck: the deck object.
+
+#
+#
+#
+
+deck.py
+the deck and card object. some helper functions
+
+
+class deck(object):
+the deck object. has the 'deck' property.
+deck is a list of cards.
+
+def __init__(self):
+initializes a deck- a list of cards.
+
+def create_deck(self):
+used when a deck is initialized.
+	
+def shuffle(self):
+shuffles the deck.
+note:the deck is shuffled at the start of every round
+
+def deal(self):
+used for when a player is assigned a card. removes a card from the deck 
+
+output:
+	returns a card. 
+
+def putbackcards(self,players):
+puts back cards that were played this round back into the deck
+
+input:
+	players: list of player objects        
+
+class card(object):
+the card object.
+each card object has a suit, suitrank, and a face.
+suit is a string. (ex "Spades")
+suitrank is an int. (ex 4, 3, 2, or 1) correlates to the suit's strength. the bigger the better
+face is an int. (0-13). The higher the better for that player. drawing a 0 also applies a penalty of 1 point.
+
+def __init__(self,suit,suitrank,face):
+initializes a card with properties suit, suitrank, and face.
+
+#
+#
+#
+
+player.py
+the player object. some helper functions, and some logic for the game.
+
+
+class player(object):
+the player object. each player object has the properties id, hand, and score.
+id is an int. The unique indentifier to differentiate between players.
+hand is a card object. The card the corresponding player draws for the round.
+score is an int. The score of the corresponding player.
+
+def __init__(self,id):
+initializes a player with properties id, hand, and score.
+
+def sethand(self, card):
+function to set player's hand to a card.
+note: use with deck.deal()
+
+def showid(self):
+function to show a player's id.
+output:
+	returns an int
+
+def showscore(self):
+function to show a player's score.
+output:
+	returns an int
+
+def showhand(self):
+function to show a player's hand.
+output:
+	returns a card
+
+def printhand(self):
+function to print a player's hand. prints hand
+
+def checkpenalty(self):
+checks if card drawn is penalty. applies and prints penalty
+
+def decrementscore(self):
+decrements score
+
+def incrementscore(self):
+increments score
+
+def calculateround(players):
+calculates the winner of the round
+increments the score of the winner.
+prints winner and their new score
+input:
+	players: a list of player objects
+
+def printallscores(players):
+prints all scores for all players
+input:
+	players: a list of player objects
+
+def wincondition(players):
+checks if game is done.
+prints winner if game is done.
+input:
+	players: a list of player objects
+output:
+	returns boolean 
